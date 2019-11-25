@@ -30,14 +30,6 @@ function SWEP:DoDrawCrosshair()
 	return true
 end
 
-function SWEP:PrimaryAttack()
-	if self.Owner:KeyPressed(IN_ATTACK) then
-		if IsFirstTimePredicted() then
-			surface.PlaySound("UI/buttonclick.wav")
-		end
-	end
-end
-
 net.Receive("wkdevtool-boundingbox", function(len,sender)
 	local self = net.ReadTable()
 	if self.press == 0 then
@@ -130,4 +122,10 @@ net.Receive("wkdevtool-printpoints", function(len,sender)
 		print("["..k.."] = { position = Vector("..math.Round(pos.x)..", "..math.Round(pos.y)..", "..math.Round(pos.z)..") },")
 	end
 	print("}")
+end)
+
+net.Receive("wkdevtool-nicepos", function(len,sender)
+	local pos = LocalPlayer():GetPos()
+	local ang = LocalPlayer():EyeAngles()
+	print("[DEV TOOLS] { position = Vector("..math.Round(pos.x)..", "..math.Round(pos.y)..", "..math.Round(pos.z).."), angle = Angle("..math.Round(ang.x)..", "..math.Round(ang.y)..", "..math.Round(ang.z)..") }")
 end)

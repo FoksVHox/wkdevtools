@@ -8,9 +8,8 @@
 
 concommand.Add( "nicepos", function( ply, cmd, args )
 	if ply:IsPlayer() and ply:Alive() then
-		local pos = ply:GetPos()
-		local ang = ply:EyeAngles()
-		print("[DEV TOOLS] { position = Vector("..math.Round(pos.x)..", "..math.Round(pos.y)..", "..math.Round(pos.z).."), angle = Angle("..math.Round(ang.x)..", "..math.Round(ang.y)..", "..math.Round(ang.z)..") }")
+		net.Start("wkdevtool-nicepos")
+		net.Send(ply)
 	else
 		print("You need to be ingame to use this command.")
 	end

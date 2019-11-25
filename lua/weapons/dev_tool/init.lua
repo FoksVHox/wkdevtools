@@ -12,6 +12,7 @@ include("shared.lua")
 
 util.AddNetworkString("wkdevtool-printpoints")
 util.AddNetworkString("wkdevtool-boundingbox")
+util.AddNetworkString("wkdevtool-nicepos")
 
 function SWEP:AddPos()
 	local tr = self.Owner:GetEyeTrace()
