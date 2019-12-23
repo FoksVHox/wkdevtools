@@ -37,7 +37,7 @@ net.Receive("wkdevtool-boundingbox", function(len,sender)
 		self.pos = self.HitPos
 	elseif self.press == 1 then
 		surface.PlaySound("UI/buttonclick.wav")
-		self.pos2 = LocalPlayer():EyePos() + LocalPlayer():EyeAngles():Forward( ) * 50
+		self.pos2 = LocalPlayer():GetEyeTrace().HitPos
 	elseif self.press >= 2 then
 		surface.PlaySound("UI/buttonclickrelease.wav")
 		print("[DEV TOOLS] { min = Vector("..math.Round(self.pos.x)..", "..math.Round(self.pos.y)..", "..math.Round(self.pos.z).."), max = Vector("..math.Round(self.pos2.x)..", "..math.Round(self.pos2.y)..", "..math.Round(self.pos2.z)..") }")
